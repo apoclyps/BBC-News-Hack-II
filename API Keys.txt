@@ -1,0 +1,6 @@
+Context News Tool's Keys
+
+Below are keys you can use to access the API products associated with this application (Context News Tool). The actual keys need to be approved and approved for an API product to be capable of accessing any of the URIs defined in the API product.
+
+Consumer Key 	Qc2qPD1jlgl8Yz9hCokogAToVQ5iOeV8
+Consumer Secret 	PAb6gsFn6FQVsrVX 
