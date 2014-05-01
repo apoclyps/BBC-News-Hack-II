@@ -15,8 +15,8 @@ function genericOnClick(info, tab) {
 	chrome.tabs.create({
         url: "results/results.html"
     }, function (tab) {
-        chrome.tabs.onUpdated.addListener(function (tabId) {
-            if (tabId == tab.id) {
+        chrome.tabs.onUpdated.addListener(function (tabId, changeinfo) {
+            if (tabId == tab.id && changeinfo.status == 'complete') {
                 chrome.tabs.sendMessage(tabId, {
                     "data": selectedText
                 });
@@ -34,8 +34,8 @@ chrome.commands.onCommand.addListener(function(command) {
 	chrome.tabs.create({
         url: "results/results.html"
     }, function (tab) {
-        chrome.tabs.onUpdated.addListener(function (tabId) {
-            if (tabId == tab.id) {
+        chrome.tabs.onUpdated.addListener(function (tabId, changeinfo) {
+            if (tabId == tab.id && changeinfo.status == 'complete') {
                 chrome.tabs.sendMessage(tabId, {
                     "data": selectedText
                 });
