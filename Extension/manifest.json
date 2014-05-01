@@ -8,7 +8,7 @@
     "tabs",
 	"activeTab",
 	"contextMenus",
-	"http://data.bbc.co.uk"
+	"http://data.bbc.co.uk/"
   ],
   "commands": {
 	  "doSelection": {
@@ -27,5 +27,5 @@
 	  "default_title": "This is a test"
   },
   "manifest_version": 2,
-  "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self'"
+  "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self' 'unsafe-eval'; img-src 'all'"
 }

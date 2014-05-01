@@ -1,10 +1,52 @@
+<!DOCTYPE html>
 <html>
 <head>
-<script src="results.js"></script>
-</script>
+	<meta charset="utf-8">
+	<title>????????</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body>
-	
-</body>
+<script type="text/x-handlebars">
+    {{outlet}}
+</script>
+<script type="text/x-handlebars" id="index">
+    <div class="header">
+        Found {{model.length}} related items.
+    </div>
+    <div class="container">
+        {{outlet}}
+    </div>
+</script>
 
+<script type="text/x-handlebars" id="main">
+   {{#each item in model}}
+        <div class="item">
+            <div class="col-md-3">
+                <img {{bind-attr src=item.image}}>
+            </div>
+            <div class="col-md-9">
+                <h2>{{item.title}}</h2><br>
+                <b>From:</b> {{item.source}}<br>
+                <b>Date:</b> {{item.published}}<br>
+                {{item.description}}<br>
+                <a {{bind-attr href=item.url}} target="_blank">Open article</a>
+            </div>
+        </div>
+        {{/each}}
+</script>
+
+<script src="js/libs/jquery-1.10.2.js">
+</script>
+<script src="js/libs/bootstrap.min.js">
+</script>
+<script src="js/libs/handlebars-1.1.2.js">
+</script>
+<script src="js/libs/ember-1.5.0.js">
+</script>
+<script src="js/app.js">
+</script>
+</body>
 </html>
