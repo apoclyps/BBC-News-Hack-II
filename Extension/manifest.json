@@ -1,0 +1,26 @@
+{
+  "name": "NewsHACK II: Electric Boogaloo",
+  "version": "0.0.1",
+  "description": "Chrome extension for BBC NewsHACK",
+  "icons": { "128": "icon.png" },
+  "background": { "scripts": ["background.js"] },
+  "content_scripts": [
+    { 
+		"matches": ["http://*.bbc.co.uk/*"], 
+		"js": ["jquery-1.11.0.min.js", "work.js"],
+		"css": ["style.css"]
+	}
+  ],
+  "permissions": [
+    "tabs",
+	"activeTab"
+  ],
+  "browser_action": {
+      "default_name": "Display Map",
+      "default_icon": "icon.png",
+      "default_popup": "popup.html",
+	  "default_title": "This is a test"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self'"
+}
