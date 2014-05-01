@@ -2,6 +2,8 @@
  * BBC-Juicer.js
  *
  */
+
+ var result = "";
 $(document).ready(function () {
 
     var bbcAPI = "http://data.bbc.co.uk/bbcrd-juicer/articles.json?"+
@@ -15,13 +17,11 @@ $(document).ready(function () {
                 type: 'GET',
                 url: bbcAPI,
                 async: false,
-                callback: '.',
-                jsonp: '.',
                 contentType: "application/json",
-                dataType: 'jsonp',
+                dataType: 'json',
                 crossDomain : true,
                 success: function (data) {
-                    alert(data);
+                    result=data;
                 },
                 error: function (e) {
                     console.log(e.message);
@@ -30,6 +30,6 @@ $(document).ready(function () {
         }
 
 
-  
+
     //Update View
 });
