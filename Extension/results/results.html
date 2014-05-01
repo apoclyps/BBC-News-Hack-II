@@ -13,15 +13,16 @@
     {{outlet}}
 </script>
 <script type="text/x-handlebars" id="index">
-    <div class="header">
-        Found {{model.length}} related items.
-    </div>
+    Searching...
     <div class="container">
         {{outlet}}
     </div>
 </script>
 
 <script type="text/x-handlebars" id="main">
+    <div class="header">
+        Found {{model.length}} related items.
+    </div>
    {{#each item in model}}
         <div class="item">
             <div class="col-md-3">

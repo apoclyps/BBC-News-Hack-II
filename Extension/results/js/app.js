@@ -28,7 +28,7 @@ App.MainRoute = Ember.Route.extend({
 
         return $.ajax({
             type: 'GET',
-            url: bbcAPI + App.get('searchTerm'),
+            url: bbcAPI + encodeURIComponent('"' + App.get('searchTerm').replace('\s', ' AND ')),
             cache: false,
             contentType: "application/json",
             dataType: 'json',
