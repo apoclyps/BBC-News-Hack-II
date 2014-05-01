@@ -1,4 +1,4 @@
-$(document).ready(function() { 
+/*$(document).ready(function() { 
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
   if(message.method == "getWord"){
   alert();
@@ -14,4 +14,4 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     // Once we have the info we can just use sendResponse(word); like before
   }
 });
-});
+});*/
