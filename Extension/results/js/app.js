@@ -24,22 +24,35 @@ App.IndexController = Ember.ObjectController.extend({
 App.MainRoute = Ember.Route.extend({
     model: function () {
         var self = this;
+		var formData = new FormData();
+			formData.append('text',encodeURIComponent(App.get('searchTerm')));
+			formData.append('confidence',20);
+			formData.append('support',0.2);
 
-        return $.ajax({
-            type: 'GET',
-            url: bbcAPI + encodeURIComponent('"' + App.get('searchTerm').replace('\s', ' AND ')),
-            cache: false,
-            contentType: "application/json",
-            dataType: 'json',
+		return $.ajax({
+            type: 'POST',
+            url: "http://spotlight.dbpedia.org/rest/annotate",
+			data: formData,
             crossDomain: true
         }).then(function(data) {
-             var modelArray = extract(data);
-             modelArray.searchTerm = App.get('searchTerm');
+			var resource = formatResource(data);
+			
+		    return $.ajax({
+				type: 'GET',
+				url: bbcAPI + encodeURIComponent('"' + App.get('searchTerm').replace('\s', ' AND ')),
+				cache: false,
+				contentType: "application/json",
+				dataType: 'json',
+				crossDomain: true
+			}).then(function(data) {
+				var modelArray = extract(data);
+				modelArray.searchTerm = App.get('searchTerm');
 
-             return modelArray;
-        });
-    }
-});
+				return modelArray;
+			});
+		});
+		}
+	});
 
 App.MainController = Ember.ArrayController.extend({
     articles: (function () {
@@ -74,5 +87,9 @@ function extract(articlesJSON){
         newArticles.push(newArticle);
     });
    return newArticles;
+}
+
+function formatResource(data) {
+	console.log(data.toString());
 }
 
