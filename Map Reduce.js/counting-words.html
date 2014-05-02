@@ -9,20 +9,27 @@
 	</head>
 	<body>
 		<script>
-			var data = [];
-			data = extractDescriptionsFromArticle(articlesData[0].articles[0]);
-			var wordsArray = splitWordsArticle(data);
-			var results = sort(wordsArray);
-			display(results);
 
-			function extractDescriptionsFromArticle(article) {
+			getArticleRanking(articlesData[0].articles[0])
+
+			function getArticleRanking(article)
+			{
+				var data = extractArticleDescriptions(article);
+				var wordsArray = splitArticleWords(data);
+				var results = sort(wordsArray);
+				display(results);
+
+				return results;
+			}
+
+			function extractArticleDescriptions(article) {
 			    var descriptionList = [];
 			    var word = article.description.toLowerCase().replace(/[^a-zA-Z0-9]/g, ' ');
 			    descriptionList.push(word)
 			    return descriptionList;
 			}
 
-			function splitWordsArticle(data) {
+			function splitArticleWords(data) {
 			    var articleWords = [];
 
 			    var arr = [];
