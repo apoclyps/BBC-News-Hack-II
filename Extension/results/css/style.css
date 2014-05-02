@@ -2,10 +2,50 @@
     margin: 20px;
 }
 
+h2 {
+	margin-top:40px !important;
+}
+
 .item img {
+	width:100%;
+	margin-top:40px;
+	margin-right:20px !important;
     max-width: 200px !important;
 }
 
+.item {
+	margin-left:auto;
+	margin-right:auto;
+	width:90%;
+	clear:both;
+}
+
+.item_img {
+width:20%;
+	float:left;
+}
+
+.item_cnt {
+width:80%;
+	float:left;
+}
+
 .header {
+	width:50%;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+
     border-bottom: 1pt solid black;
+}
+
+#loader {
+	width:50%;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.logo {
+	width:200px;
 }
