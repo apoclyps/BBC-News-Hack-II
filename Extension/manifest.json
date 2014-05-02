@@ -1,6 +1,6 @@
 {
   "name": "NewsHACK II: Electric Boogaloo",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Chrome extension for BBC NewsHACK",
   "icons": { "128": "img/icon128.png" },
   "background": { "scripts": ["background.js"] },
