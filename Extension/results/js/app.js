@@ -70,9 +70,10 @@ var bbcAPI = "http://data.bbc.co.uk/bbcrd-juicer/articles.json?apikey=Qc2qPD1jlg
 function extract(articlesJSON){
     var newArticles = [];
     articlesJSON.articles.forEach(function (article, index) {
+        var pubDate = new Date(article.published);
         var newArticle = {}
         newArticle.title = article.title;
-        newArticle.published = article.published;
+        newArticle.published = pubDate.toString();
         newArticle.description = article.description;
         newArticle.url = article.url;
         newArticle.source = article.source;
@@ -81,9 +82,7 @@ function extract(articlesJSON){
 
         if (article.image) {
             newArticle.image = article.image.src;
-        } else {
-            newArticle.image = 'http://static.bbci.co.uk/frameworks/barlesque/2.60.9/orb/4/img/bbc-blocks-dark.png';
-        }
+        } 
 
         newArticles.push(newArticle);
     });
