@@ -14,9 +14,9 @@
 </script>
 <script type="text/x-handlebars" id="index">
     <div id="loader">
-		<img class="logo" src="../img/logo.png"/><br/><br/>
+		<img class="logo" src="../img/logo.png"/><br/><br/><br/>
 		<img id="loading_img" src="../img/loader.gif"/>
-		<br/>
+		<br/><br/>
 		<h4>Grabbing stories...</h4>
 	</div>
     <div class="container">
@@ -27,7 +27,7 @@
 <script type="text/x-handlebars" id="main">
     <div class="header">
 		<img class="logo" src="../img/logo.png"/><br/><br/>
-        Grabbed {{model.length}} stories related to: {{model.searchTerm}}.
+        Grabbed {{model.length}} stories related to: <b>{{model.searchTerm}}</b><br/>.
     </div>
    {{#each item in articles}}
         <div class="item">
