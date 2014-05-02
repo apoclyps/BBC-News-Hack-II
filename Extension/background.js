@@ -2,7 +2,7 @@
 var contexts = ["selection"];
 for (var i = 0; i < contexts.length; i++) {
 	var context = contexts[i];
-	var title = "Find articles..";
+	var title = "Grab stories using StoryGrab";
 	var id = chrome.contextMenus.create({"title": title, "contexts":[context], "onclick": genericOnClick});
 }
 

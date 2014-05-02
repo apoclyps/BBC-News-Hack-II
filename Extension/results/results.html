@@ -15,9 +15,9 @@
 <script type="text/x-handlebars" id="index">
     <div id="loader">
 		<img class="logo" src="../img/logo.png"/><br/><br/>
-		<img src="../img/loader.gif"/>
+		<img id="loading_img" src="../img/loader.gif"/>
 		<br/>
-		<h4>Searching...</h4>
+		<h4>Grabbing stories...</h4>
 	</div>
     <div class="container">
         {{outlet}}
@@ -32,13 +32,15 @@
    {{#each item in articles}}
         <div class="item">
 			<div class="item_img">
-				<img {{bind-attr src=item.image}}>
+				{{#if item.image}}
+					<img {{bind-attr src=item.image}}>
+				{{/if}}
 			</div>
 			<div class="item_cnt">
                 <a {{bind-attr href=item.url}} target="_blank"><h2>{{item.title}}</h2></a>
                 <b>From:</b> {{item.source}}<br>
                 <b>Date:</b> {{item.published}}<br>
-                {{item.description}}<br>
+                <b>Summary:</b> {{item.description}}<br>
 			</div>
         </div>
         {{/each}}
