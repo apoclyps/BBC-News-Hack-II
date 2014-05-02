@@ -9,6 +9,7 @@
 	"activeTab",
 	"contextMenus",
 	"http://data.bbc.co.uk/"
+  "http://spotlight.dbpedia.org/"
   ],
   "commands": {
 	  "doSelection": {
