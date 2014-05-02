@@ -1,7 +1,7 @@
 {
-  "name": "NewsHACK II: Electric Boogaloo",
+  "name": "StoryGrab",
   "version": "0.1.1",
-  "description": "Chrome extension for BBC NewsHACK",
+  "description": "Chrome extension for BBC NewsHACK II: Electric Boogaloo",
   "icons": { "128": "img/icon128.png" },
   "background": { "scripts": ["background.js"] },
   "permissions": [
@@ -22,10 +22,10 @@
 	 }
   },
   "browser_action": {
-      "default_name": "Display Map",
+      "default_name": "StoryGrab",
       "default_icon": "img/icon128.png",
       "default_popup": "popup/popup.html",
-	  "default_title": "This is a test"
+	  "default_title": "StoryGrab"
   },
   "manifest_version": 2,
 
