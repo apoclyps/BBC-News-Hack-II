@@ -29,7 +29,7 @@
 		<img class="logo" src="../img/logo.png"/><br/><br/>
         Grabbed {{model.length}} stories related to: <b>{{model.searchTerm}}</b><br/>.
     </div>
-   {{#each item in articles}}
+        {{#each item in model}}
         <div class="item">
 			<div class="item_img">
 				{{#if item.image}}
