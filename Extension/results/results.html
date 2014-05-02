@@ -29,6 +29,7 @@
 		<img class="logo" src="../img/logo.png"/><br/><br/>
         Grabbed {{model.length}} stories related to: {{model.searchTerm}}.
     </div>
+<<<<<<< HEAD
    {{#each item in articles}}
         <div class="item">
 			<div class="item_img">
@@ -51,6 +52,16 @@
             </div>-->
         </div>
         {{/each}}
+=======
+    {{#each item in articles}}
+    <div class="item">
+        <a {{bind-attr href=item.url}} target="_blank"><h2>{{item.title}}</h2></a>
+        <b>From:</b> {{item.source}}<br>
+        <b>Date:</b> {{item.published}}<br>
+        {{item.description}}<br>
+    </div>
+    {{/each}}
+>>>>>>> 5b9c8e22a75df870007cf466e9ec371b08335583
 </script>
 
 <script src="js/libs/jquery-1.10.2.js">
