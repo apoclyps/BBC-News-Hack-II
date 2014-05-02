@@ -23,7 +23,7 @@
     <div class="header">
         Found {{model.length}} items related to: {{model.searchTerm}}.
     </div>
-   {{#each item in model}}
+   {{#each item in articles}}
         <div class="item">
             <div class="col-md-3">
                     <img {{bind-attr src=item.image}}>
@@ -32,6 +32,7 @@
                 <a {{bind-attr href=item.url}} target="_blank"><h2>{{item.title}}</h2></a>
                 <b>From:</b> {{item.source}}<br>
                 <b>Date:</b> {{item.published}}<br>
+                 {{item.keywordCount}}<br>
                 {{item.description}}<br>
             </div>
         </div>

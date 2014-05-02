@@ -41,6 +41,15 @@ App.MainRoute = Ember.Route.extend({
     }
 });
 
+App.MainController = Ember.ArrayController.extend({
+    articles: (function () {
+		return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+			sortProperties: ['keywordCount'],
+			content: this.get('content')
+		});
+	} ).property('content')
+});
+
 var bbcAPI = "http://data.bbc.co.uk/bbcrd-juicer/articles.json?apikey=Qc2qPD1jlgl8Yz9hCokogAToVQ5iOeV8&text=";
 
 function extract(articlesJSON){
@@ -52,6 +61,8 @@ function extract(articlesJSON){
         newArticle.description = article.description;
         newArticle.url = article.url;
         newArticle.source = article.source;
+
+        newArticle.keywordCount = index % 10;
 
         if (article.image) {
             newArticle.image = article.image.src;
