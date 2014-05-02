@@ -5,12 +5,35 @@
 	
 		<script src="javascript/jquery-1.9.1.min.js"></script>
 		<script src="mapreduce.js"></script>
-		<script type="text/javascript" language="javascript" src="articles.jsonp"></script>
+		<script type="text/javascript" language="javascript" src="articles.jsonp">
+		</script>
 	</head>
 	<body>
 		<script>
+			var entities = ['ukraine','stormed','russian'];
 
-			getArticleRanking(articlesData[0].articles[0])
+			map(articlesData[0].articles[0],entities);
+
+			function map(article,entities){
+				var articleWords = getArticleRanking(article);
+				article.keywordCount = getArticleRelevanceScore(articleWords,entities);
+				console.log(article.keywordCount);
+			}
+
+			function getArticleRelevanceScore(articleWords,entities){
+				var overallRelevance = 0;
+
+				entities.forEach(function (word, wordIndex){
+					console.log(word);
+					articleWords.forEach(function (match, matchIndex){
+						console.log(match);
+						if(word.toLowerCase()==match.key.toLowerCase()){
+							overallRelevance++;
+						}
+					});
+				});
+				return overallRelevance;
+			}
 
 			function getArticleRanking(article)
 			{
