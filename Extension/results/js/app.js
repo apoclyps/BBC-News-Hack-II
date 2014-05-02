@@ -36,11 +36,11 @@ App.MainRoute = Ember.Route.extend({
 			data: formData,
             crossDomain: true
         }).then(function(data) {
-			var resource = formatResource(data);
+			var entitites = getEntitites(data);
 
 		    return $.ajax({
 				type: 'GET',
-				url: bbcAPI + encodeURIComponent('"' + App.get('searchTerm').replace('\s', ' AND ')),
+				url: bbcAPI + encodeURIComponent(entitites.join(' AND ')),
 				cache: false,
 				contentType: "application/json",
 				dataType: 'json',
@@ -70,9 +70,10 @@ var bbcAPI = "http://data.bbc.co.uk/bbcrd-juicer/articles.json?apikey=Qc2qPD1jlg
 function extract(articlesJSON){
     var newArticles = [];
     articlesJSON.articles.forEach(function (article, index) {
+        var pubDate = new Date(article.published);
         var newArticle = {}
         newArticle.title = article.title;
-        newArticle.published = article.published;
+        newArticle.published = pubDate.toString();
         newArticle.description = article.description;
         newArticle.url = article.url;
         newArticle.source = article.source;
@@ -81,8 +82,6 @@ function extract(articlesJSON){
 
         if (article.image) {
             newArticle.image = article.image.src;
-        } else {
-            newArticle.image = 'http://static.bbci.co.uk/frameworks/barlesque/2.60.9/orb/4/img/bbc-blocks-dark.png';
         }
 
         newArticles.push(newArticle);
@@ -90,10 +89,14 @@ function extract(articlesJSON){
    return newArticles;
 }
 
-var myData;
-var obj;
+function getEntitites(data) {
+	var $xml = $( data );
+	var entities=[];
 
-function formatResource(data) {
-	myData = data;
+	$xml.find('Resource').each(function() {
+	    entities.push($(this).attr('surfaceForm'));
+	});
+
+	return entities;
 }
 
