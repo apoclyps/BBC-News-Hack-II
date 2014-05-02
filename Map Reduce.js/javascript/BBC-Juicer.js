@@ -18,7 +18,7 @@ $(document).ready(function () {
     var people = extractPeople(articlesData);
 
     article.people.forEach(function (person, index) {
-        peopleList.push(person.name);
+                peopleList.push(person.name);
     });
     
 

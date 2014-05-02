@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MapReduce JS Demo - Word count</title>
+	
+		<script src="javascript/jquery-1.9.1.min.js"></script>
+		<script src="mapreduce.js"></script>
+		<script type="text/javascript" language="javascript" src="articles.jsonp"></script>
+	</head>
+	<body>
+			<script>
+			var data = extractDescriptions(articlesData);
+			var wordsArray = splitWords();
+
+			function extractDescriptions(articlesJSON){
+			        var articles = articlesJSON[0].articles;
+			        var descriptionList = [];
+			        for (var i in articlesJSON[0].articles) {
+			        	var word = articles[i].description.toLowerCase().replace(/[^a-zA-Z0-9]/g ,' ');
+			        		descriptionList.push(word);
+			        }
+			        return descriptionList;
+			    }
+
+			function splitWords(){
+				var articleWords = [];
+				data.forEach(function (description, dIndex) {
+					var arr = [];
+					arr = description.split(" ");
+						arr.forEach(function (word, wIndex) {
+							if(word.length>=4){
+								articleWords.push(word);
+							}
+						});
+	            });
+				return articleWords;
+			}
+			
+			var result = mapreduce (wordsArray, function(item, emit) {
+				var splitted = item.split(/\s/g);
+				for(var word in splitted) {
+					emit(splitted[word], 1);
+				}
+			}, function(key, values, emit) {
+				emit({ key: key, count: values.length });
+			});	
+			
+			result.sort(function (a, b)
+		    {
+		        return b.count-a.count;
+		    });
+
+			// all items that were emitted in the reduce step are now put into the 'result' variable
+			// and we can iterate over this collection
+			for(var ix = 0; ix < result.length; ix++) {
+				// we have created objects in the form { key, count }
+				// and we can write this to the screen
+				document.write(result[ix].key + ': ' + result[ix].count + '<br/>');
+			}
+		</script>
+	</body>
+</html>
