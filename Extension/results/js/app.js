@@ -45,6 +45,7 @@ App.MainController = Ember.ArrayController.extend({
     articles: (function () {
 		return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
 			sortProperties: ['keywordCount'],
+			sortAscending: false,
 			content: this.get('content')
 		});
 	} ).property('content')
