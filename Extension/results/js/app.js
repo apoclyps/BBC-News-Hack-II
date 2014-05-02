@@ -22,10 +22,8 @@ App.IndexController = Ember.ObjectController.extend({
 });
 
 App.MainRoute = Ember.Route.extend({
-    searchTerm: App.get('searchTerm'),
     model: function () {
         var self = this;
-
 
         return $.ajax({
             type: 'GET',
@@ -35,7 +33,10 @@ App.MainRoute = Ember.Route.extend({
             dataType: 'json',
             crossDomain: true
         }).then(function(data) {
-             return extract(data);
+             var modelArray = extract(data);
+             modelArray.searchTerm = App.get('searchTerm');
+
+             return modelArray;
         });
     }
 });

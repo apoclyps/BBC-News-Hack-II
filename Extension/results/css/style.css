@@ -4,8 +4,8 @@
 
 .item img {
     max-width: 200px !important;
-    float: left;
-    margin: 20px;
 }
 
-.header { border-bottom: 1pt solid black; }
+.header {
+    border-bottom: 1pt solid black;
+}
