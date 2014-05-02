@@ -90,7 +90,10 @@ function extract(articlesJSON){
    return newArticles;
 }
 
+var myData;
+var obj;
+
 function formatResource(data) {
-	console.log(data.toString());
+	myData = data;
 }
 
