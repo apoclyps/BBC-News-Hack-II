@@ -13,6 +13,7 @@ App.Router.map(function () {
 
 
 App.IndexController = Ember.ObjectController.extend({
+    searchTerm: App.get('searchTerm'),
     actions: {
         goMain: function(searchTerm) {
             this.transitionToRoute('main');
