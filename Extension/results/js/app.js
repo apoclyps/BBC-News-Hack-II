@@ -51,7 +51,7 @@ function extract(articlesJSON){
         newArticle.url = article.url;
         newArticle.source = article.source;
 
-        if (newArticle.image) {
+        if (article.image) {
             newArticle.image = article.image.src;
         } else {
             newArticle.image = 'http://static.bbci.co.uk/frameworks/barlesque/2.60.9/orb/4/img/bbc-blocks-dark.png';

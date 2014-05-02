@@ -3,7 +3,7 @@
 }
 
 .item img {
-    width: 200px !important;
+    max-width: 200px !important;
     float: left;
     margin: 20px;
 }
