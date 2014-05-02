@@ -36,7 +36,7 @@ App.MainRoute = Ember.Route.extend({
 			data: formData,
             crossDomain: true
         }).then(function(data) {
-			var resource = formatResource(data);
+			var resource = getEntitites(data);
 
 		    return $.ajax({
 				type: 'GET',
@@ -52,8 +52,8 @@ App.MainRoute = Ember.Route.extend({
 				return modelArray;
 			});
 		});
-		}
-	});
+	}
+});
 
 App.MainController = Ember.ArrayController.extend({
     articles: (function () {
@@ -82,17 +82,24 @@ function extract(articlesJSON){
 
         if (article.image) {
             newArticle.image = article.image.src;
-        } 
+        }
 
         newArticles.push(newArticle);
     });
    return newArticles;
 }
 
-var myData;
-var obj;
 
-function formatResource(data) {
-	myData = data;
+function getEntitites(data) {
+	var $xml = $( data );
+	var entities=[];
+
+	$xml.find('Resource').each(function() {
+	    entities.push($(this).attr('surfaceForm'));
+	});
+
+	return entities;
 }
+
+
 

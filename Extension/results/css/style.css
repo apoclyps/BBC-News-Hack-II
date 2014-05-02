@@ -3,11 +3,12 @@
 }
 
 h2 {
+font-size:1.0em !important;
 	margin-top:40px !important;
 }
 
 .item img {
-	width:100%;
+	width:90%;
 	margin-top:40px;
 	margin-right:20px !important;
     max-width: 200px !important;
