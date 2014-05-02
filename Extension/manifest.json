@@ -8,7 +8,7 @@
     "tabs",
 	"activeTab",
 	"contextMenus",
-	"http://data.bbc.co.uk/"
+	"http://data.bbc.co.uk/",
   "http://spotlight.dbpedia.org/"
   ],
   "commands": {
@@ -28,6 +28,6 @@
 	  "default_title": "This is a test"
   },
   "manifest_version": 2,
-  
+
   "content_security_policy": "img-src *; default-src 'none'; style-src 'self'; script-src 'self' 'unsafe-eval'; connect-src * "
 }
