@@ -24,10 +24,11 @@ App.IndexController = Ember.ObjectController.extend({
 App.MainRoute = Ember.Route.extend({
     model: function () {
         var self = this;
-		var formData = new FormData();
-			formData.append('text',encodeURIComponent(App.get('searchTerm')));
-			formData.append('confidence',20);
-			formData.append('support',0.2);
+		var formData = {
+		    text: App.get('searchTerm'),
+			confidence: 0.2,
+			support: 20
+		};
 
 		return $.ajax({
             type: 'POST',
@@ -36,7 +37,7 @@ App.MainRoute = Ember.Route.extend({
             crossDomain: true
         }).then(function(data) {
 			var resource = formatResource(data);
-			
+
 		    return $.ajax({
 				type: 'GET',
 				url: bbcAPI + encodeURIComponent('"' + App.get('searchTerm').replace('\s', ' AND ')),
